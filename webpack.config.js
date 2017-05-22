@@ -3,7 +3,7 @@
 const path = require('path');
 const ROOT_PATH = path.resolve(__dirname);
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
-const BUILD_PATH = path.resolve(ROOT_PATH, './');
+const BUILD_PATH = path.resolve(ROOT_PATH, './build/');
 
 const Webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -24,7 +24,8 @@ const plugins = [
 
 module.exports = {
   entry: {
-    main: SRC_PATH + '/js/index'
+    main: SRC_PATH + '/js/main',
+    bundle: SRC_PATH + '/js/index'
   },
   output: {
     path: BUILD_PATH,
@@ -62,6 +63,23 @@ module.exports = {
   // Fix error : Module not found: Error: Can't resolve 'fs'
   // https://github.com/webpack-contrib/css-loader/issues/447
   node: {
-    fs: 'empty'
-  }
+    fs: 'empty',
+    __dirname: false,
+    __filename: false
+  },
+  // Fix error : Electron w/ Webpack
+  // https://stackoverflow.com/questions/34427446/bundle-error-using-webpack-for-electron-application-cannot-resolve-module-elec
+  externals: [
+    (() => {
+      var IGNORES = [
+        'electron'
+      ];
+      return (context, request, callback) => {
+        if (IGNORES.indexOf(request) >= 0) {
+          return callback(null, "require('" + request + "')");
+        }
+        return callback();
+      };
+    })()
+  ]
 }

@@ -2,10 +2,10 @@
   "name": "bg_ratings",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "build/main.js",
   "scripts": {
     "start": "electron .",
-    "build:dev": "webpack --progress --colors --watch",
+    "build:dev": "webpack --progress --colors",
     "build:prod": "webpack --progress --colors -p --watch",
     "lint": "eslint src"
   },
