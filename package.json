@@ -5,9 +5,10 @@
   "main": "build/main.js",
   "scripts": {
     "start": "electron .",
-    "build:dev": "webpack --progress --colors",
+    "build:dev": "webpack --progress --colors --watch",
     "build:prod": "webpack --progress --colors -p --watch",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "pack": "electron-packager . 'BG Ranking' --out ~/Desktop/BGRanking --overwrite"
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +35,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.28.1",
     "electron": "^1.6.8",
+    "electron-packager": "^8.7.0",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^7.0.0",
     "extract-text-webpack-plugin": "^2.1.0",
