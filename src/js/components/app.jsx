@@ -1,20 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Container } from 'semantic-ui-react'
 
-import NavBar from './nav_bar';
+import NavBar from './semantic_ui/nav_bar';
+// import NavBar from './nav_bar';
 
 class App extends Component {    
   render() {
     return (
-      <div>
+      <Container>
         <NavBar />
         <main role="main">
           <div className="container">
             {this.props.children}
           </div>
         </main>
-      </div>
+        <footer>
+          <p>&copy; hf 2017</p>
+        </footer>
+      </Container>
     );
   }
 }
@@ -27,7 +32,7 @@ class App extends Component {
 //   currentUser: PropTypes.object
 // }
 
-const mapStateToProps = ({authentication, application}) => {
+const mapStateToProps = () => {
   return { 
   };
 }

@@ -2,6 +2,8 @@
 import electron, {app, BrowserWindow, Menu, Tray} from 'electron';
 import path from 'path';
 
+// let mainWindow;
+
 const createWindow = () => {
   let mainWindow = new BrowserWindow({
     show: false,
@@ -31,18 +33,18 @@ const createWindow = () => {
   // Menu.setApplicationMenu(menu);
   // // END MENU
   
-  // TRAY
-  const tray = new Tray(path.join('src', 'images', 'avatar.png'));
-  const contextMenu = Menu.buildFromTemplate([
-    {
-      label: 'Wow',
-      click: () => console.log("wow")
-    }
-  ]);
-  
-  tray.setContextMenu(contextMenu);
-  tray.setToolTip('Backgammon Ranking List');
-  // END TRAY  
+  // // TRAY
+  // const tray = new Tray(path.join('src', 'images', 'avatar.png'));
+  // const contextMenu = Menu.buildFromTemplate([
+  //   {
+  //     label: 'Wow',
+  //     click: () => console.log("wow")
+  //   }
+  // ]);
+  //
+  // tray.setContextMenu(contextMenu);
+  // tray.setToolTip('Backgammon Ranking List');
+  // // END TRAY
   
   mainWindow.loadURL(`file://${__dirname}/index.html`);
     
@@ -65,10 +67,10 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('activate', () => {
-  // re-create the mainWindow if the dock icon is clicked in OS X and no other
-  // windows were open
-  if (mainWindow === null) {
-    createWindow();
-  }
-});
+// app.on('activate', () => {
+//   // re-create the mainWindow if the dock icon is clicked in OS X and no other
+//   // windows were open
+//   if (! mainWindow) {
+//     createWindow();
+//   }
+// });
