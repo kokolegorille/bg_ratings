@@ -1,5 +1,6 @@
 // Electron starter point
-import electron, {app, BrowserWindow, Menu} from 'electron';
+import electron, {app, BrowserWindow, Menu, Tray} from 'electron';
+import path from 'path';
 
 const createWindow = () => {
   let mainWindow = new BrowserWindow({
@@ -8,25 +9,40 @@ const createWindow = () => {
     height: 728
   });
   
-  const name = app.getName();
-  const template = [
+  // // MENU
+  // const name = app.getName();
+  // const template = [
+  //   {
+  //     label: name,
+  //     submenu: [{
+  //       label: `About ${name}`,
+  //       click: () => {console.log("clicked!")},
+  //       role: 'about'
+  //     }, {
+  //       type: 'separator'
+  //     }, {
+  //       label: "Quit",
+  //       click: () => {app.quit()},
+  //       accelerator: 'Cmd+Q'
+  //     }]
+  //   }
+  // ];
+  // const menu = Menu.buildFromTemplate(template);
+  // Menu.setApplicationMenu(menu);
+  // // END MENU
+  
+  // TRAY
+  const tray = new Tray(path.join('src', 'images', 'avatar.png'));
+  const contextMenu = Menu.buildFromTemplate([
     {
-      label: name,
-      submenu: [{
-        label: `About ${name}`,
-        click: () => {console.log("clicked!")},
-        role: 'about'
-      }, {
-        type: 'separator'
-      }, {
-        label: "Quit",
-        click: () => {app.quit()},
-        accelerator: 'Cmd+Q'
-      }]
+      label: 'Wow',
+      click: () => console.log("wow")
     }
-  ];
-  const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);
+  ]);
+  
+  tray.setContextMenu(contextMenu);
+  tray.setToolTip('Backgammon Ranking List');
+  // END TRAY  
   
   mainWindow.loadURL(`file://${__dirname}/index.html`);
     

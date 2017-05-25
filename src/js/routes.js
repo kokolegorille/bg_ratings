@@ -6,48 +6,20 @@ import HomePage from './components/home_page'
 import NoMatchPage from './components/no_match_page'
 
 import AboutPage from './components/about_page';
-
-// import Signin from './components/session/sign_in';
-// import Signout from './components/session/sign_out';
-// import Signup from './components/registration/sign_up';
-//
-// import Authentication from './components/hoc/authentication';
-// import WithChannel from './components/hoc/with_channel';
-//
-// import LobbyPage from './components/lobby_page';
-// import GamePage from './components/game_page';
-// import ArchivesPage from './components/archives_page';
+import UsersPage from './components/users_page';
+import TournamentsPage from './components/tournaments_page';
+import RankingPage from './components/ranking_page';
 
 // http://stackoverflow.com/questions/42095600/nested-routes-in-v4
-
-// export default (
-//   <App>
-//     <Switch>
-//       <Route exact path="/" component={HomePage} />
-//
-//       <Route path="/sign_in" component={Signin} />
-//       <Route path="/sign_up" component={Signup} />
-//       <Route path="/sign_out" component={Signout} />
-//
-//       <Route path="/lobby"
-//         component={Authentication(
-//           WithChannel({topic: "lobby"})(LobbyPage)
-//         )} />
-//       <Route path="/games/:id"
-//         component={Authentication(
-//           WithChannel({topic: "game"})(GamePage)
-//         )} />
-//       <Route path="/archives" component={Authentication(ArchivesPage)} />
-//
-//       <Route component={NoMatchPage} />
-//     </Switch>
-//   </App>
-// );
 
 export default (
   <App>
     <Switch>
       <Route exact path="/" component={HomePage} />
+      <Route path="/users" component={UsersPage} />
+      <Route path="/tournaments" component={TournamentsPage} />
+      <Route path="/ranking" component={RankingPage} />
+  
       <Route path="/about" component={AboutPage} />
       <Route component={NoMatchPage} />
     </Switch>
