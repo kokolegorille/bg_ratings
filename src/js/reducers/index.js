@@ -4,7 +4,13 @@ import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 
+import application from './application_reducer';
+import authentication from './authentication_reducer';
+
 const reduxApp = combineReducers({
+  application,
+  authentication,
+  
   // System
   form,
   router: routerReducer

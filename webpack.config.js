@@ -25,7 +25,7 @@ const plugins = [
 module.exports = {
   entry: {
     main: SRC_PATH + '/js/main',
-    bundle: SRC_PATH + '/js/index'
+    renderer: SRC_PATH + '/js/index'
   },
   output: {
     path: BUILD_PATH,
