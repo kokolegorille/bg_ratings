@@ -17,7 +17,17 @@ const FirebaseApi = {
   
   sign_out: () => (
     firebase.auth().signOut()
-  )
+  ),
+  
+  create_user: (first_name, last_name) => {
+    let user = {
+      first_name: first_name,
+      last_name: last_name
+    };
+    firebase.database().ref('users').push(user, (err) => 
+      {if (err) console.log(err)}
+    );
+  }
 }
 
 export default FirebaseApi;
