@@ -6,10 +6,12 @@ import { reducer as form } from 'redux-form';
 
 import application from './application_reducer';
 import authentication from './authentication_reducer';
+import users from './users_reducer';
 
 const reduxApp = combineReducers({
   application,
   authentication,
+  users,
   
   // System
   form,

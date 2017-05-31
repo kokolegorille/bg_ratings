@@ -10,6 +10,10 @@ const initialState = {
     currentUser: null,
     sign_in_error: null,
     sign_up_error: null
+  },
+  users: {
+    list: {},
+    create_error: null
   }
 }
 

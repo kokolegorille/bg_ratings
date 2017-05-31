@@ -33,7 +33,7 @@ class Signin extends Component {
       <div>
         <h1>Sign in</h1>
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <Field name='email' component={renderField} type='text' placeholder='Email' label='Email'/>
+          <Field name='email' component={renderField} type='text' placeholder='Email' label='Email' autoFocus={true} />
           <Field name='password' component={renderField} type='password' placeholder='Password' label='Password' />
           {this.renderAlert()}
           <div>

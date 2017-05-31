@@ -7,6 +7,7 @@ const AboutPage = () => (
     <p>It uses the following libraries.</p>
     <ul>
       <li>Electron</li>
+      <li>Firebase</li>
       <li>React</li>
       <li>React Router</li>
       <li>Redux</li>

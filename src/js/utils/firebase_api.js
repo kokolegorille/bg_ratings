@@ -6,7 +6,7 @@ const FirebaseApi = {
   initialize: () => (
     firebase.initializeApp(defaultConfig)
   ),
-  
+    
   sign_in: (email, password) => (
     firebase.auth().signInWithEmailAndPassword(email, password)
   ),
@@ -19,15 +19,25 @@ const FirebaseApi = {
     firebase.auth().signOut()
   ),
   
+  // USERS
   create_user: (first_name, last_name) => {
-    let user = {
+    const user = {
       first_name: first_name,
       last_name: last_name
     };
-    firebase.database().ref('users').push(user, (err) => 
-      {if (err) console.log(err)}
-    );
-  }
+    
+    return firebase.database().ref('users').push(user);
+  },
+  
+  load_users: () => (
+    firebase.database().ref('users')
+      .once('value')
+  ),
+  
+  delete_user: (id) => (
+    firebase.database().ref('users')
+      .child(id).remove()
+  )
 }
 
 export default FirebaseApi;

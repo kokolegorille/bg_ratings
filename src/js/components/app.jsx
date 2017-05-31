@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import firebase from 'firebase';
 
 import NavBar from './nav_bar';
 // import NavBar from './semantic_ui/nav_bar';
