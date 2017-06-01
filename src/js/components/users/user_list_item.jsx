@@ -6,7 +6,7 @@ const UserListItem = ({user}) => {
   return (
     <li>
       <Link to={`/users/${id}`}>
-        {first_name}&nbsp;{last_name}
+        {last_name}&nbsp;{first_name}
       </Link>
     </li>
   )

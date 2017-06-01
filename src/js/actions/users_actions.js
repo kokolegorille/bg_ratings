@@ -21,6 +21,7 @@ export const loadUsers = () => {
         // JS does not keep key order!
         // But inside snapshot.forEach data is ordered!
         // https://stackoverflow.com/questions/39027993/is-there-a-way-to-make-a-realtime-foreach-in-firebase
+        // https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot
         
         let result = [];
         snapshot.forEach(child => {

@@ -14,7 +14,7 @@ const createWindow = () => {
   
   mainWindow.loadURL(`file://${__dirname}/index.html`);
     
-  mainWindow.on('ready-to-show', () => {
+  mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
 

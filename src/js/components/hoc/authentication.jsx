@@ -3,21 +3,29 @@ import { connect } from 'react-redux';
 
 export default (ComposedComponent) => {
   class Authentication extends Component {
-    static contextTypes = {
-      router: PropTypes.object
-    }
+    // static contextTypes = {
+    //   router: PropTypes.object
+    // }
+    //
+    // componentWillMount() {
+    //   if (!this.props.isAuthenticated)
+    //     this.props.history.push('/sign_in');
+    // }
+    //
+    // componentWillUpdate(nextProps) {
+    //   if (!nextProps || !nextProps.isAuthenticated)
+    //     this.props.history.push('/sign_in');
+    // }
+    //
+    // render() {
+    //   return <ComposedComponent { ...this.props } />;
+    // }
     
-    componentWillMount() {
-      if (!this.props.isAuthenticated)
-        this.props.history.push('/sign_in');
-    }
     
-    componentWillUpdate(nextProps) {
-      if (!nextProps || !nextProps.isAuthenticated)
-        this.props.history.push('/sign_in');
-    }
-    
+    // Electron Fix on reload, do not push new route
     render() {
+      if (!this.props.isAuthenticated) return <p>Not authenticated!</p>
+        
       return <ComposedComponent { ...this.props } />;
     }
   }
