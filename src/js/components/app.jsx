@@ -18,7 +18,7 @@ class App extends Component {
   renderWelcome() {
     const currentUser = this.props.currentUser;
     if (!currentUser) return;
-    return <p>welcome {currentUser.email}</p>
+    return <span>welcome {currentUser.email}</span>
   }
   
   renderSpinner() {
@@ -36,9 +36,11 @@ class App extends Component {
     return (
       <div className="container">
         {this.renderNavBar()}
-        {this.renderWelcome()}
-        <main role="main">
+        <div>
+          {this.renderWelcome()}
           {this.renderSpinner()}
+        </div>
+        <main role="main">
           {this.props.children}
         </main>
         <footer>
