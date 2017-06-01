@@ -12,7 +12,7 @@ const initialState = {
     sign_up_error: null
   },
   users: {
-    list: {},
+    list: [],
     initialValues: null,
     create_error: null,
     update_error: null

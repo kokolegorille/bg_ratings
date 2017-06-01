@@ -26,11 +26,13 @@ const FirebaseApi = {
       last_name: last_name
     };
     
-    return firebase.database().ref('/users/').push(user);
+    return firebase.database().ref('/users/')
+      .push(user);
   },
   
   load_users: () => (
     firebase.database().ref('/users/')
+      .orderByChild('last_name')
       .once('value')
   ),
   

@@ -9,8 +9,7 @@ import { renderField } from '../form_builder';
 
 class UserEdit extends Component {
   componentDidMount() {
-    const {id} = this.props.match.params;
-    const user = this.props.list[id];
+    const user = this._userById();
     
     // Load value into redux-form
     // https://www.davidmeents.com/blog/create-redux-form-validation-initialized-values/
@@ -31,6 +30,11 @@ class UserEdit extends Component {
       );
     }
   }
+  
+  _userById() {
+    const {id} = this.props.match.params;
+    return this.props.list.filter(obj => obj.id === id)[0];
+  }
 
   render() {
     const {
@@ -42,9 +46,10 @@ class UserEdit extends Component {
       fields: {first_name, password}
     } = this.props;
     
-    // Load user data by id from state
     const {id} = this.props.match.params;
-    const user = this.props.list[id];
+    
+    // Load user data by id from state
+    const user = this._userById();
     
     if (! user) return <p>Loading...</p>;
     

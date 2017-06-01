@@ -14,13 +14,7 @@ class UsersPage extends Component {
   _renderUsers() {
     const list = this.props.users.list;
     if (! list) return <p>The list is empty.</p>;
-
-    // list from firebase are object with oid as key
-    // Transform to an array of users, with id added
-    const users = Object.keys(list)
-      .map(key => Object.assign({}, list[key], {id: key}));
-
-    return <UserList users={users} />
+    return <UserList users={list} />
   }
 
   render() {

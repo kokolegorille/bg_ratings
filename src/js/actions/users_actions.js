@@ -15,9 +15,27 @@ export const loadUsers = () => {
     sendDispatch(dispatch, types.LOAD_USERS_REQUEST, null);
     
     Api.load_users()
-      .then((snapshot) => sendDispatch(dispatch, types.LOAD_USERS_SUCCESS, snapshot.val()))
+      .then(snapshot => {
+        
+        // Snapshot.val() returns a json object
+        // JS does not keep key order!
+        // But inside snapshot.forEach data is ordered!
+        // https://stackoverflow.com/questions/39027993/is-there-a-way-to-make-a-realtime-foreach-in-firebase
+        
+        let result = [];
+        snapshot.forEach(child => {
+          result.push(
+            Object.assign({}, child.val(), {id: child.key})
+          );
+        }); // Children are ordered inside forEach
+        
+        sendDispatch(dispatch, types.LOAD_USERS_SUCCESS, result);
+        
+        // Returns JSON object, keys order is not maintained by browser!
+        // sendDispatch(dispatch, types.LOAD_USERS_SUCCESS, snapshot.val());
+      })
       .catch(error => sendDispatch(dispatch, types.LOAD_USERS_ERROR, error.toString()));
-    
+
   });
 };
 

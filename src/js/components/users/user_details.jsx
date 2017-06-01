@@ -10,7 +10,8 @@ class UserDetails extends Component {
     const {id} = this.props.match.params;
     
     // Load user data by id from state
-    const user = this.props.list[id];
+    const user = this.props.list.filter(obj => obj.id === id)[0];
+    
     if (! user) return <p>Loading...</p>;
     
     const full_name = `${user.first_name} ${user.last_name}`;
