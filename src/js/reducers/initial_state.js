@@ -13,7 +13,9 @@ const initialState = {
   },
   users: {
     list: {},
-    create_error: null
+    initialValues: null,
+    create_error: null,
+    update_error: null
   }
 }
 

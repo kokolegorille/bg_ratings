@@ -8,13 +8,20 @@ import { deleteUser } from '../../actions/users_actions';
 class UserDetails extends Component {
   render() {
     const {id} = this.props.match.params;
+    
+    // Load user data by id from state
+    const user = this.props.list[id];
+    if (! user) return <p>Loading...</p>;
+    
+    const full_name = `${user.first_name} ${user.last_name}`;
+    
     return (
       <div>
-        <h1>User {id}</h1>
-
+        <h1>{full_name}</h1>
+              
         <ul>
           <li><Link to="/users">Index</Link></li>
-          <li>Edit</li>
+          <li><Link to={`/users/${id}/edit`}>Edit</Link></li>
           <li><a href="" onClick={this._handleClick.bind(this)}>Delete</a></li>
         </ul>
 
@@ -31,14 +38,15 @@ class UserDetails extends Component {
 }
 
 UserDetails.propTypes = {
-  loadUsers: PropTypes.func.isRequired,
-  users: PropTypes.object
+  deleteUser: PropTypes.func.isRequired,
+  list: PropTypes.object
 }
 
-// const mapStateToProps = () => {
-//   return {
-//   };
-// }
+const mapStateToProps = ({users}) => {
+  return {
+    list: users.list
+  };
+}
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -46,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(UserDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);

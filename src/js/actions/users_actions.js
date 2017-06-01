@@ -53,3 +53,18 @@ export const deleteUser = (id, history) => {
     
   });
 };
+
+// THUNK
+export const updateUser = (id, {first_name, last_name, history}) => {
+  return (dispatch => {
+    sendDispatch(dispatch, types.UPDATE_USER_REQUEST, id);
+    
+    Api.update_user(id, first_name, last_name)
+      .then(() => {
+        sendDispatch(dispatch, types.UPDATE_USER_SUCCESS, {id, first_name, last_name});
+        history.push(`/users/${id}`);
+      })
+      .catch(error => sendDispatch(dispatch, types.UPDATE_USER_ERROR, error.toString()));
+    
+  });
+};

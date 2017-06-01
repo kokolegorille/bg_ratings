@@ -26,18 +26,27 @@ const FirebaseApi = {
       last_name: last_name
     };
     
-    return firebase.database().ref('users').push(user);
+    return firebase.database().ref('/users/').push(user);
   },
   
   load_users: () => (
-    firebase.database().ref('users')
+    firebase.database().ref('/users/')
       .once('value')
   ),
   
   delete_user: (id) => (
-    firebase.database().ref('users')
+    firebase.database().ref('/users/')
       .child(id).remove()
-  )
+  ),
+  
+  update_user: (id, first_name, last_name) => {
+    const user = {
+      first_name: first_name,
+      last_name: last_name
+    };
+    return firebase.database().ref('/users/')
+      .child(id).update(user);
+  }
 }
 
 export default FirebaseApi;
