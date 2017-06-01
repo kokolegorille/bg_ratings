@@ -11,8 +11,11 @@ const list = (state = initialState.users.list, action) => {
     // https://stackoverflow.com/questions/19837916/creating-object-with-dynamic-keys
     case types.UPDATE_USER_SUCCESS:
       const {id, first_name, last_name} = action.payload;  
+      
+      // Find the index position of the updated element
       const foundIndex = state.findIndex(obj => obj.id === id);
-      const left = state.slice(0, foundIndex - 1);  // left of foundIndex
+      
+      const left = state.slice(0, foundIndex);  // left of foundIndex
       
       // merge left + updated object + right
       const new_state = left.concat(

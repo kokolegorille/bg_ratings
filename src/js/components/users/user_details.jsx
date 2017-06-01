@@ -14,7 +14,8 @@ class UserDetails extends Component {
     
     if (! user) return <p>Loading...</p>;
     
-    const full_name = `${user.first_name} ${user.last_name}`;
+    const {first_name, last_name} = user;
+    const full_name = `${first_name} ${last_name}`;
     
     return (
       <div>

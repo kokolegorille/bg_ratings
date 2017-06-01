@@ -46,13 +46,12 @@ class UserEdit extends Component {
       fields: {first_name, password}
     } = this.props;
     
-    const {id} = this.props.match.params;
-    
     // Load user data by id from state
     const user = this._userById();
     
     if (! user) return <p>Loading...</p>;
     
+    const {id} = this.props.match.params;
     const full_name = `${user.first_name} ${user.last_name}`;
     
     // Prompt usage depends on redux-form state
