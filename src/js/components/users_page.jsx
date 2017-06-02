@@ -79,16 +79,16 @@ class UsersPage extends Component {
   render() {
     return(
       <div className="flex-container">
-        <div className="sidebar pannel">
+        <aside className="pannel">
           <h1>Users</h1>
           {this._renderUsers()}
 
           <Link to={"/users/new"}>
             New user
           </Link>
-        </div>
+        </aside>
           
-        <div className="pannel">
+        <div className="pannel" id="main-pannel">
           <Route path="/users/:id" component={Authentication(UserDetails)} />
         </div>
       </div>

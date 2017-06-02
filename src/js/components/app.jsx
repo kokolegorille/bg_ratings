@@ -34,12 +34,14 @@ class App extends Component {
   
   render() {
     return (
-      <div className="container">
-        {this.renderNavBar()}
-        <div>
-          {this.renderWelcome()}
-          {this.renderSpinner()}
-        </div>
+      <div id="wrapper">
+        <header>
+          {this.renderNavBar()}
+          <div>
+            {this.renderWelcome()}
+            {this.renderSpinner()}
+          </div>
+        </header>
         <main role="main">
           {this.props.children}
         </main>
