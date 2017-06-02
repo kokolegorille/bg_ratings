@@ -24,6 +24,9 @@ const list = (state = initialState.users.list, action) => {
         )
       );
       return new_state;
+    
+    case types.DELETE_USER_SUCCESS:
+      return state.filter(obj => obj.id !== action.payload);
       
     default:
       return state;

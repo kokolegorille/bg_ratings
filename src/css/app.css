@@ -6,6 +6,26 @@
   background: #5BD4ED;
 }
 
+/* FLEX */
+.flex-container {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+}
+
+.sidebar {
+  width: 230px;
+  -webkit-flex: 0 0 230px; 
+  flex: 0 0 230px; 
+  background: #e1e1e1;
+}
+
+.pannel {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 /* Put app related css here! */
 
 nav ul {

@@ -22,7 +22,6 @@ class UserDetails extends Component {
         <h1>{full_name}</h1>
               
         <ul>
-          <li><Link to="/users">Index</Link></li>
           <li><Link to={`/users/${id}/edit`}>Edit</Link></li>
           <li><a href="" onClick={this._handleClick.bind(this)}>Delete</a></li>
         </ul>
